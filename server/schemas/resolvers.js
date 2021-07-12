@@ -18,7 +18,6 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('associateWithWorker')
         return userData;
       }
       throw new AuthenticationError('Not logged in');
@@ -27,14 +26,12 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select('-__v -password')
-        .populate('associateWithWorker')
     },
 
     // Getting user by email
     user: async (parent, { email }) => {
       return User.findOne({ email })
         .select('-__v -password')
-        .populate('associateWithWorker')
     },
 
     feelings: async (parent, { email }) => {
@@ -60,7 +57,6 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.birthworker._id })
           .select('-__v -password')
-          .populate('associateWithUser')
         return userData;
       }
       throw new AuthenticationError('Not logged in');
@@ -69,13 +65,11 @@ const resolvers = {
     birthworker: async (parent, { email }) => {
       return Birthworker.findOne({ email })
         .select('-__v -password')
-        .populate('associateWithUser')
     },
 
     birthworkers: async () => {
       return Birthworker.find()
         .select('-__v -password')
-        .populate('associateWithUser')
     },
   },
 
@@ -110,35 +104,6 @@ const resolvers = {
         );
         return feeling;
       }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-
-    // -=- Association -=- //
-    associateWorker: async (parent, { awwId }, context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { associateWithWorker: awwId } },
-          { new: true }
-        ).populate('associateWithWorker')
-
-        return updatedUser
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-    },
-
-    associateUser: async (parent, { awuId }, context) => {
-      if (context.birthworker) {
-        const updatedUser = await Birthworker.findOneAndUpdate(
-          { _id: context.birthworker._id },
-          { $addToSet: { associateWithUser: awuId } },
-          { new: true }
-        ).populate('associateWithUser')
-
-        return updatedUser
-      }
-
       throw new AuthenticationError('You need to be logged in!');
     },
 
