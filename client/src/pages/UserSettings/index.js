@@ -5,7 +5,6 @@ import { QUERY_BIRTHWORKERS } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 import UserInfo from '../../components/UserInfo';
-// import MidwifeCard from '../../components/MidwifeCard';
 import NavbarUser from '../../components/NavbarUser';
 
 function UserSettings() {
@@ -29,7 +28,6 @@ function UserSettings() {
                 <div>
                     <UserInfo />
                     <div>
-                        <a><Link to="/all-workers">See all workers</Link></a>
                     </div>
                 </div>
 

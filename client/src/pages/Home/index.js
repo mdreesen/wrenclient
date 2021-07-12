@@ -3,7 +3,6 @@ import React from 'react';
 // import components
 import NavbarUser from '../../components/NavbarUser';
 import Mood from '../../components/Mood';
-import AssociatedBWList from '../../components/AssociatedBWList';
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_ME_BASIC } from '../../utils/queries';
@@ -20,11 +19,6 @@ function Home(props) {
                     <>
                     <div className="home-cards">
                         <Mood />
-                        <AssociatedBWList 
-                            username={userData.me.username}
-                            birthworkerCount={userData.me.birthworkerCount}
-                            associateWithWorker={userData.me.associateWithWorker}
-                        />
                     </div>
                     </>
                 ) : (
