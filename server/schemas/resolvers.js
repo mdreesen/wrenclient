@@ -1,4 +1,4 @@
-const { User, Birthworker, Feeling } = require('../models');
+const { User, Admin, Feeling } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -44,31 +44,31 @@ const resolvers = {
 
     // -=- Birthworker Resolvers -=- //
     // Logged in birthworker information
-    viewBirthworker: async (parent, args, context) => {
-      if (context.birthworker) {
-        const birthworkerData = await Birthworker.findOne({ _id: context.birthworker._id })
+    viewAdmin: async (parent, args, context) => {
+      if (context.admin) {
+        const adminData = await Admin.findOne({ _id: context.admin._id })
           .select('-__v -password')
-        return birthworkerData;
+        return adminData;
       }
       throw new AuthenticationError('Not logged in');
     },
     // Logged in user information
-    worker: async (parent, args, context) => {
-      if (context.user) {
-        const userData = await User.findOne({ _id: context.birthworker._id })
-          .select('-__v -password')
-        return userData;
-      }
-      throw new AuthenticationError('Not logged in');
-    },
+    // worker: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const userData = await User.findOne({ _id: context.birthworker._id })
+    //       .select('-__v -password')
+    //     return userData;
+    //   }
+    //   throw new AuthenticationError('Not logged in');
+    // },
     // Getting birthworker by email
-    birthworker: async (parent, { email }) => {
-      return Birthworker.findOne({ email })
+    admin: async (parent, { email }) => {
+      return Admin.findOne({ email })
         .select('-__v -password')
     },
 
-    birthworkers: async () => {
-      return Birthworker.find()
+    admins: async () => {
+      return Admin.find()
         .select('-__v -password')
     },
   },
@@ -108,23 +108,23 @@ const resolvers = {
     },
 
     // -=- BirthWorker Mutations -=-
-    addBirthworker: async (parent, args) => {
-      const birthworker = await Birthworker.create(args);
-      const token = signToken(birthworker);
-      return { token, birthworker };
+    addAdmin: async (parent, args) => {
+      const admin = await Admin.create(args);
+      const token = signToken(admin);
+      return { token, Admin };
     },
 
-    workerLogin: async (parent, { email, password }) => {
-      const birthworker = await Birthworker.findOne({ email });
-      if (!birthworker) {
+    adminLogin: async (parent, { email, password }) => {
+      const admin = await Admin.findOne({ email });
+      if (!admin) {
         throw new AuthenticationError('Incorrect Credentials');
       }
-      const correctPw = await birthworker.isCorrectPassword(password);
+      const correctPw = await admin.isCorrectPassword(password);
       if (!correctPw) {
         throw new AuthenticationError('Incorrect Credentials');
       }
-      const token = signToken(birthworker);
-      return { token, birthworker };
+      const token = signToken(admin);
+      return { token, admin };
     },
   }
 };

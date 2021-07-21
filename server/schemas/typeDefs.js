@@ -12,15 +12,13 @@ type Query {
     helloWorld: String
 
     me: User
-    viewBirthworker: Birthworker
+    viewAdmin: Admin
 
     users: [User]
     user(email: String!): User
 
-    worker: Birthworker
-
-    birthworkers: [Birthworker]
-    birthworker(email: String!): Birthworker
+    admin: Admin
+    admins: Admin
 
     feelings(email: String): [Feeling]
     feeling(email: String!): Feeling
@@ -29,7 +27,7 @@ type Query {
 type Auth {
     token: ID!
     user: User
-    birthworker: Birthworker
+    admin: Admin
 }
 
 type User {
@@ -40,19 +38,16 @@ type User {
     email: String
     password: String
     mood: String
-    birthworkerCount: Int
-    associateWithWorker: [Birthworker]
     feelings: [Feeling]
 }
 
-type Birthworker {
+type Admin {
     _id: ID
     username: String
     firstname: String
     lastname: String
     email: String
     password: String
-    associateWithUser: [User]
 }
 
 type Feeling {
@@ -67,11 +62,8 @@ type Mutation {
     userLogin(email: String!, password: String!): Auth
     mood(mood: String): User
 
-    associateWorker(awwId: ID!): User
-    associateUser(awuId: ID!): Birthworker
-
-    addBirthworker(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
-    workerLogin(email: String!, password: String!): Auth
+    addAdmin(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
+    adminLogin(email: String!, password: String!): Auth
 
     addFeeling(feelingText: String!): Feeling
 }

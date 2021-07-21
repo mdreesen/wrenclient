@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 // The birthworker Schema uses regex to validate the email
 
-const birthworkerSchema = new Schema(
+const adminSchema = new Schema(
   {
     username: {
       type: String,
@@ -35,12 +35,12 @@ const birthworkerSchema = new Schema(
       trim: true
   },
     // Users that will be associated with the birthworker
-    associateWithUser: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-      }
-    ],
+    // associateWithUser: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User'
+    //   }
+    // ],
   },
   {
     toJSON: {
@@ -51,7 +51,7 @@ const birthworkerSchema = new Schema(
 
 // set up pre-save middleware to create password
 // This checks to see if the password is new or has been modified
-birthworkerSchema.pre('save', async function(next) {
+adminSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -61,15 +61,15 @@ birthworkerSchema.pre('save', async function(next) {
 });
 
 // compare the incoming password with the hashed password
-birthworkerSchema.methods.isCorrectPassword = async function(password) {
+adminSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
 // May think about adding friends to this
-birthworkerSchema.virtual('userCount').get(function() {
+adminSchema.virtual('userCount').get(function() {
   return this.associateWithUser.length;
 });
 
-const Birthworker = model('Birthworker', birthworkerSchema);
+const Admin = model('Admin', adminSchema);
 
-module.exports = Birthworker;
+module.exports = Admin;

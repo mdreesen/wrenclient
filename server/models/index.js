@@ -1,5 +1,5 @@
-const Birthworker = require('./Birthworker');
+const Admin = require('./Admin')
 const User = require('./User');
 const Feeling = require('./Feeling');
 
-module.exports = { Birthworker, User, Feeling };
+module.exports = { Admin, User, Feeling };

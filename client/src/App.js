@@ -45,14 +45,14 @@ function App() {
             <Route exact path="/" component={Landing}/>
             <Route exact path="/settings" component={UserSettings} />
             <Route exact path="/home" component={Home}/>
-            <Route exact path="/worker-login" component={LoginMidwife}/>
-            <Route exact path="/birthworker/265317993996/signup" component={BirthworkerSignup}/>
+            <Route exact path="/admin-login" component={LoginMidwife}/>
+            <Route exact path="/admin/265317993996/signup" component={BirthworkerSignup}/>
             <Route exact path="/user-login" component={SecondaryLoginForm} />
-            <Route exact path="/worker-home" component={WorkerHome}/>
-            <Route exact path="/profile/birthworker/:username" component={BirthworkerProfile}/>
+            <Route exact path="/admin-home" component={WorkerHome}/>
+            {/* <Route exact path="/profile/birthworker/:username" component={BirthworkerProfile}/> */}
 
-            <Route exact path="/worker/users" component={AssociatedUsers}/>
-            <Route exact path='/worker/settings' component={WorkerSettings} />
+            {/* <Route exact path="/worker/users" component={AssociatedUsers}/> */}
+            <Route exact path='/admin/settings' component={WorkerSettings} />
             <Route component={NotAPage}/>
           </Switch>
         </div>
