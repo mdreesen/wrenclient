@@ -115,14 +115,6 @@ export const QUERY_ME_BASIC = gql `
       firstname
       lastname
       email
-      birthworkerCount
-      associateWithWorker {
-        _id
-        username
-        firstname
-        lastname
-        email
-    }
     }
   }
 `;
