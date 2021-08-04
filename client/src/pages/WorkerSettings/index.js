@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_WORKER_BASIC } from '../../utils/queries';
+import { QUERY_ADMIN } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 import WorkerInfo from '../../components/WorkerInfo';
@@ -11,7 +11,7 @@ import NavbarWorker from '../../components/NavbarWorker';
 function WorkerSettings() {
 
     // getting the data from the query
-    const { loading, data } = useQuery(QUERY_WORKER_BASIC);
+    const { loading, data } = useQuery(QUERY_ADMIN);
     console.log({ data })
 
     // if no birthworkers then bring back an empty array

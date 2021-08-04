@@ -9,7 +9,7 @@ function Footer() {
     <div className="icon-left">
         <ul className="icon-column">
             <a className="footer-link"><Link to="">About</Link></a>
-            <a><Link to="/admin-login">worker login</Link></a>
+            <a><Link to="/admin-login">admin login</Link></a>
             <a className="footer-link"><Link to="/"/></a>
 
             <li className="footer-link">copyright of Wren&copy;</li>

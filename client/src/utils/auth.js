@@ -36,10 +36,10 @@ class AuthService {
         return localStorage.getItem('id_token');
     }
 
-    workerLogin(idTokenWorker) {
+    adminLogin(idTokenWorker) {
         if (idTokenWorker) {
             localStorage.setItem('id_token', idTokenWorker);
-            window.location.assign('/worker-home');
+            window.location.assign('/admin-home');
         } else {
             window.location.assign('/');
         }

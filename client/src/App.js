@@ -12,9 +12,9 @@ import Communication from './pages/Communication';
 
 import NotAPage from './pages/NotAPage';
 
-import LoginMidwife from './components/LoginMidwife';
+import AdminLogin from './components/AdminLogin';
 import SecondaryLoginForm from './components/SecondaryLoginForm';
-import WorkerHome from './pages/WorkerHome';
+import AdminHome from './pages/AdminHome';
 import BirthworkerSignup from './pages/BirthworkerSignup';
 
 // import worker pages
@@ -48,10 +48,10 @@ function App() {
             <Route exact path="/home" component={Home}/>
             <Route exact path='/messages' component={Communication} />
 
-            <Route exact path="/admin-login" component={LoginMidwife}/>
+            <Route exact path="/admin-login" component={AdminLogin}/>
             <Route exact path="/admin/265317993996/signup" component={BirthworkerSignup}/>
             <Route exact path="/user-login" component={SecondaryLoginForm} />
-            <Route exact path="/admin-home" component={WorkerHome}/>
+            <Route exact path="/admin-home" component={AdminHome}/>
 
             <Route exact path='/admin/settings' component={WorkerSettings} />
             <Route component={NotAPage}/>

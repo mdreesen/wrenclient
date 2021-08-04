@@ -1,21 +1,21 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import Auth from '../../utils/auth';
-import { QUERY_WORKER_BASIC } from '../../utils/queries';
+import { QUERY_ADMIN } from '../../utils/queries';
 
 // import components
 import NavbarWorker from '../../components/NavbarWorker';
 import AssociatedUserList from '../../components/AssociatedUserList';
 
-function WorkerHome() {
+function AdminHome() {
 
-    const { data: viewBirthworker } = useQuery(QUERY_WORKER_BASIC);
-    console.log('worker data', viewBirthworker);
+    const { data: viewAdmin } = useQuery(QUERY_ADMIN);
+    console.log('worker data', viewAdmin);
 
     return(
         <div>
             <NavbarWorker />
-            {viewBirthworker && Auth.loggedIn() ? (
+            {viewAdmin && Auth.loggedIn() ? (
                 <>
                 <p>This is the worker page</p>
                 <AssociatedUserList/>
@@ -27,4 +27,4 @@ function WorkerHome() {
     );
 }
 
-export default WorkerHome;
+export default AdminHome;

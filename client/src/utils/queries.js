@@ -87,9 +87,9 @@ export const QUERY_ME_BASIC = gql `
   }
 `;
 
-export const QUERY_WORKER_BASIC = gql `
+export const QUERY_ADMIN = gql `
 {
-  viewBirthworker {
+  viewAdmin {
     _id
     username
     firstname

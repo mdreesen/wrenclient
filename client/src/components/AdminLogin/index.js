@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/react-hooks';
-import { LOGIN_BIRTHWORKER } from '../../utils/mutations';
+import { ADMIN_LOGIN} from '../../utils/mutations';
 
 
 // TODO
@@ -10,9 +10,9 @@ import { LOGIN_BIRTHWORKER } from '../../utils/mutations';
 // UnhandledPromiseRejectionWarning: Error: WHERE parameter "email" has invalid "undefined" value
 // it is switching to other pages after email and password is put in, but need to handle this better
 
-function LoginMidwife() {
+function AdminLogin() {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [workerLogin, { error }] = useMutation(LOGIN_BIRTHWORKER);
+  const [adminLogin, { error }] = useMutation(ADMIN_LOGIN);
 
   // update state based on form input changes
   const handleChange = event => {
@@ -31,14 +31,14 @@ function LoginMidwife() {
     event.preventDefault();
 
     try {
-      const { data } = await workerLogin({
+      const { data } = await adminLogin({
         variables: { ...formState }
       });
       console.log(data)
-      console.log(data.workerLogin)
-      console.log(data.workerLogin.token)
+      console.log(data.adminLogin)
+      console.log(data.adminLogin.token)
       // debugger;
-      Auth.workerLogin(data.workerLogin.token);
+      Auth.adminLogin(data.adminLogin.token);
     } catch (e) {
       console.error(e);
     }
@@ -76,4 +76,4 @@ function LoginMidwife() {
     );
 }
 
-export default LoginMidwife;
+export default AdminLogin;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_WORKER_BASIC } from '../../utils/queries';
+import { QUERY_ADMIN } from '../../utils/queries';
 import Auth from '../../utils/auth';
 
 function UserInfo() {
     
-    const { data: viewBirthworker } = useQuery(QUERY_WORKER_BASIC);
+    const { data: viewBirthworker } = useQuery(QUERY_ADMIN);
 
     const companyName = viewBirthworker.viewBirthworker.username;
     const companyEmail = viewBirthworker.viewBirthworker.email
