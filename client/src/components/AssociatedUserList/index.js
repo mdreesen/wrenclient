@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_USERS } from '../../utils/queries';
 
-    const AssociatedUserList = ({ userCount, username, associateWithUser }) => {
+    const AssociatedUserList = ({ userCount }) => {
 
-        console.log('username', username)
-        console.log('associateWithWorker', associateWithUser)
-        console.log('birthworkerCount', userCount)
+        const { data: usersAdmins } = useQuery(QUERY_USERS);
+        console.log('Workers Users', usersAdmins);
 
-        if (!associateWithUser || !associateWithUser.length) {
+        if (!usersAdmins || !usersAdmins.length) {
           return (
             <div className="card mood-card box-shadow-back" style={{width: '18rem'}}>
             <div className="card-body">
@@ -20,10 +21,10 @@ import { Link } from 'react-router-dom';
     return (
         <div className="card mood-card box-shadow-back" style={{width: '18rem'}}>
             <div className="card-header">
-                Your {userCount} {userCount === 1 ? 'associated user' : 'associated users'}
+                Your {usersAdmins} {usersAdmins === 1 ? 'associated user' : 'associated users'}
             </div>
             <ul className="list-group list-group-flush">
-            {associateWithUser.map(user => (
+            {usersAdmins.map(user => (
                     <li key={user._id}>
                         <h6 className="associated-birthworker-name">{user.username}</h6>
                         <Link to={`/profile/birthworker/${user.username}`} className="btn btn-primary associated-midwife-btn">View Profile</Link>

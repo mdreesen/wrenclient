@@ -60,7 +60,7 @@ adminSchema.methods.isCorrectPassword = async function(password) {
 
 // May think about adding friends to this
 adminSchema.virtual('userCount').get(function() {
-  return this.associateWithUser.length;
+  return this.userCount.length;
 });
 
 const Admin = model('Admin', adminSchema);
