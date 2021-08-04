@@ -34,13 +34,6 @@ const adminSchema = new Schema(
       unique: false,
       trim: true
   },
-    // Users that will be associated with the birthworker
-    // associateWithUser: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User'
-    //   }
-    // ],
   },
   {
     toJSON: {

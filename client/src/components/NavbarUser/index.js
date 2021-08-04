@@ -23,11 +23,11 @@ function Navbar() {
                         Home
                     </Link>
                 </li>
-                {/* <li className="nav-item">
-                    <Link to="/user-documents" className="nav-link">
-                        Documents
+                <li className="nav-item">
+                    <Link to="/messages" className="nav-link">
+                        Message
                     </Link>
-                </li> */}
+                </li>
                 <li className="nav-item">
                     <Link to="/settings" className="nav-link">
                         Settings

@@ -52,6 +52,7 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
+
     // Logged in user information
     // worker: async (parent, args, context) => {
     //   if (context.user) {
@@ -61,6 +62,7 @@ const resolvers = {
     //   }
     //   throw new AuthenticationError('Not logged in');
     // },
+
     // Getting birthworker by email
     admin: async (parent, { email }) => {
       return Admin.findOne({ email })
@@ -111,7 +113,7 @@ const resolvers = {
     addAdmin: async (parent, args) => {
       const admin = await Admin.create(args);
       const token = signToken(admin);
-      return { token, Admin };
+      return { token, admin };
     },
 
     adminLogin: async (parent, { email, password }) => {

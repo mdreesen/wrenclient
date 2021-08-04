@@ -8,12 +8,13 @@ import ApolloClient from 'apollo-boost';
 import Landing from './pages/Landing';
 import UserSettings from './pages/UserSettings';
 import Home from './pages/Home';
+import Communication from './pages/Communication';
+
 import NotAPage from './pages/NotAPage';
+
 import LoginMidwife from './components/LoginMidwife';
 import SecondaryLoginForm from './components/SecondaryLoginForm';
 import WorkerHome from './pages/WorkerHome';
-import AssociatedUsers from './pages/Users';
-import BirthworkerProfile from './pages/Birthworkerprofile';
 import BirthworkerSignup from './pages/BirthworkerSignup';
 
 // import worker pages
@@ -45,13 +46,13 @@ function App() {
             <Route exact path="/" component={Landing}/>
             <Route exact path="/settings" component={UserSettings} />
             <Route exact path="/home" component={Home}/>
+            <Route exact path='/messages' component={Communication} />
+
             <Route exact path="/admin-login" component={LoginMidwife}/>
             <Route exact path="/admin/265317993996/signup" component={BirthworkerSignup}/>
             <Route exact path="/user-login" component={SecondaryLoginForm} />
             <Route exact path="/admin-home" component={WorkerHome}/>
-            {/* <Route exact path="/profile/birthworker/:username" component={BirthworkerProfile}/> */}
 
-            {/* <Route exact path="/worker/users" component={AssociatedUsers}/> */}
             <Route exact path='/admin/settings' component={WorkerSettings} />
             <Route component={NotAPage}/>
           </Switch>

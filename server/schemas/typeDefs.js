@@ -17,8 +17,8 @@ type Query {
     users: [User]
     user(email: String!): User
 
-    admin: Admin
-    admins: Admin
+    admin(email: String!): Admin
+    admins: [Admin]
 
     feelings(email: String): [Feeling]
     feeling(email: String!): Feeling

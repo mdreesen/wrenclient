@@ -7,13 +7,6 @@ export const QUERY_USER = gql`
         user(username: $username) {
         _id
         username
-        associateWithWorker {
-            _id
-            username
-            firstname
-            lastname
-            email
-        }
     }
 }
 `;
@@ -26,10 +19,6 @@ export const QUERY_USERS = gql `
       firstname
       lastname
       email
-      associateWithWorker {
-        username
-        firstname
-      }
     }
   }
 `;
@@ -40,13 +29,6 @@ export const QUERY_ASSOCIATED_USER = gql `
     users {
       _id
       email
-      associateWithWorker {
-        _id
-        username
-        firstname
-        lastname
-        email
-      }
     }
   }
 `;
@@ -60,13 +42,6 @@ query birthworker($username: String!) {
         firstname
         lastname
         email
-      associateWithUser {
-        _id
-        username
-        firstname
-        lastname
-        email
-      }
     }
   }
 `;
@@ -95,13 +70,6 @@ export const QUERY_ME = gql `
       firstname
       lastname
       email
-      associateWithWorker {
-        _id
-        username
-        firstname
-        lastname
-        email
-      }
     }
   }
 `;
@@ -127,12 +95,6 @@ export const QUERY_WORKER_BASIC = gql `
     firstname
     lastname
     email
-    associateWithUser {
-      _id
-      username
-      firstname
-      email
-    }
   }
 }
 `;
