@@ -33,6 +33,16 @@ export const QUERY_ASSOCIATED_USER = gql `
   }
 `;
 
+export const QUERY_FEELINGS = gql `
+  query feelings($email: String) {
+    feelings(email: $email) {
+      _id
+      feelingText
+      createdAt
+      username
+    }
+  }
+`;
 // querying single birthworker
 export const QUERY_BIRTHWORKER = gql `
 query birthworker($username: String!) {
@@ -70,6 +80,11 @@ export const QUERY_ME = gql `
       firstname
       lastname
       email
+      feelings {
+        _id
+        feelingText
+        createdAt
+      }
     }
   }
 `;
@@ -83,6 +98,11 @@ export const QUERY_ME_BASIC = gql `
       firstname
       lastname
       email
+      feelings {
+        _id
+        feelingText
+        createdAt
+      }
     }
   }
 `;

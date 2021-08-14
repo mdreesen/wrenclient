@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_ASSOCIATED_USER  } from '../../utils/queries';
+import { QUERY_USERS  } from '../../utils/queries';
 import Auth from '../../utils/auth';
-
-import UserCard from '../../components/UserCard';
+import AdminUser from '../../components/AdminUser';
 import NavbarWorker from '../../components/NavbarWorker';
 
-function AllUsers() {
+function AdminUsers() {
 
     // getting the data from the query
-    const { loading, data } = useQuery(QUERY_ASSOCIATED_USER);
+    const { loading, data } = useQuery(QUERY_USERS);
     console.log({ data })
 
     // if no users then bring back an empty array
@@ -32,7 +31,9 @@ function AllUsers() {
                 <div>
                     <div className="row-container">
                         <div className='row'>
-                            <UserCard userCard={users} />
+                            <>
+                                <AdminUser userCard={users} />
+                            </>
                         </div>
                     </div>
                 </div>
@@ -44,4 +45,4 @@ function AllUsers() {
     );
 }
 
-export default AllUsers;
+export default AdminUsers;

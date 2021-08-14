@@ -5,7 +5,7 @@ import { QUERY_ADMIN } from '../../utils/queries';
 
 // import components
 import NavbarWorker from '../../components/NavbarWorker';
-import AssociatedUserList from '../../components/AssociatedUserList';
+import AssociatedUserList from '../../components/AdminUser';
 
 function AdminHome() {
 
@@ -18,7 +18,7 @@ function AdminHome() {
             {viewAdmin && Auth.loggedIn() ? (
                 <>
                 <p>This is the worker page</p>
-                <AssociatedUserList/>
+                {/* <AssociatedUserList/> */}
                 </>
             ) : (
                 <h5>Please log in to to be a part of our community!</h5>

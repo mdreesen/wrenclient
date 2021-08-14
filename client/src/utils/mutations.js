@@ -29,7 +29,7 @@ mutation($username: String!, $firstname: String!, $lastname: String!, $email: St
   }
 `;
 
-export const FEELING_TEXT = gql `
+export const ADD_FEELING = gql `
   mutation addFeeling($feelingText: String!) {
     addFeeling(feelingText: $feelingText) {
       _id

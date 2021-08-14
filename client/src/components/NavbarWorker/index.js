@@ -22,7 +22,7 @@ function Navbar() {
                         Home
                     </Link>  
                 <li className="nav-item">
-                    <Link to="/worker/users" className="nav-link">
+                    <Link to="/admin-users" className="nav-link">
                         Users
                     </Link>                
                 </li>

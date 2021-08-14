@@ -5,6 +5,7 @@ import { ApolloProvider, operationName } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
 // Import pages
+// User pages
 import Landing from './pages/Landing';
 import UserSettings from './pages/UserSettings';
 import Home from './pages/Home';
@@ -12,10 +13,12 @@ import Communication from './pages/Communication';
 
 import NotAPage from './pages/NotAPage';
 
+// Admin Pages
 import AdminLogin from './components/AdminLogin';
 import SecondaryLoginForm from './components/SecondaryLoginForm';
 import AdminHome from './pages/AdminHome';
 import BirthworkerSignup from './pages/BirthworkerSignup';
+import AdminUsers from './pages/AdminUsers';
 
 // import worker pages
 import WorkerSettings from './pages/WorkerSettings';
@@ -52,6 +55,7 @@ function App() {
             <Route exact path="/admin/265317993996/signup" component={BirthworkerSignup}/>
             <Route exact path="/user-login" component={SecondaryLoginForm} />
             <Route exact path="/admin-home" component={AdminHome}/>
+            <Route exact path="/admin-users" component={AdminUsers} />
 
             <Route exact path='/admin/settings' component={WorkerSettings} />
             <Route component={NotAPage}/>
