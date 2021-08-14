@@ -29,6 +29,17 @@ mutation($username: String!, $firstname: String!, $lastname: String!, $email: St
   }
 `;
 
+export const FEELING_TEXT = gql `
+  mutation addFeeling($feelingText: String!) {
+    addFeeling(feelingText: $feelingText) {
+      _id
+      feelingText
+      createdAt
+      email
+    }
+  }
+`;
+
 export const ASSOCIATE_WITH_WORKER = gql `
   mutation associateWorker($id: ID!) {
     associateWorker(awwId: $id) {

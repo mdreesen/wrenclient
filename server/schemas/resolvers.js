@@ -5,6 +5,10 @@ const { signToken } = require('../utils/auth');
 // NOTES
 // resolvers is an object with a query nested inside that holds a series of methods
 // these methods get the same name of the query or mutation they are resolvers
+// Parent - This is if we used nested resolvers to handle more complicated actions, as it would hold the reference to the resolver that executed the nested resolver function
+// args - This is an object of all the values passed into a query or mutation request as parameters. We destructured the "email" parameter our to be used
+// context - If we were to need the same data to be accessible by all resolvers, such as a logged-in user's status or API access token, this data will come through this contect parameter as an object.
+// info - This will contain extra information about an operations current state. This isnt used as frequent, but it can be implemented for more advanced uses.
 
 const resolvers = {
   Query: {
@@ -34,10 +38,13 @@ const resolvers = {
         .select('-__v -password')
     },
 
+    // getting all feelings
     feelings: async (parent, { email }) => {
       const params = email ? { email } : {};
       return Feeling.find(params).sort({ createdAt: -1 });
     },
+
+    // get one feeling
     feeling: async (parent, { email }) => {
       return Feeling.findOne({ email });
     },

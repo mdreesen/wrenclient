@@ -21,7 +21,7 @@ type Query {
     admins: [Admin]
 
     feelings(email: String): [Feeling]
-    feeling(email: String!): Feeling
+    feeling(_id: ID!): Feeling
 }
 
 type Auth {
@@ -60,7 +60,6 @@ type Feeling {
 type Mutation {
     addUser(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     userLogin(email: String!, password: String!): Auth
-    mood(mood: String): User
 
     addAdmin(username: String!, firstname: String!, lastname: String!, email: String!, password: String!): Auth
     adminLogin(email: String!, password: String!): Auth
