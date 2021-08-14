@@ -19,6 +19,11 @@ export const QUERY_USERS = gql `
       firstname
       lastname
       email
+      feelings {
+        _id
+        feelingText
+        createdAt
+      }
     }
   }
 `;

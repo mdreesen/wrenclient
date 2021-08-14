@@ -19,6 +19,7 @@ import SecondaryLoginForm from './components/SecondaryLoginForm';
 import AdminHome from './pages/AdminHome';
 import BirthworkerSignup from './pages/BirthworkerSignup';
 import AdminUsers from './pages/AdminUsers';
+import UserProfile from './pages/UserProfile'
 
 // import worker pages
 import WorkerSettings from './pages/WorkerSettings';
@@ -56,6 +57,7 @@ function App() {
             <Route exact path="/user-login" component={SecondaryLoginForm} />
             <Route exact path="/admin-home" component={AdminHome}/>
             <Route exact path="/admin-users" component={AdminUsers} />
+            <Route exact path="/profile/user/:username" component={UserProfile}/>
 
             <Route exact path='/admin/settings' component={WorkerSettings} />
             <Route component={NotAPage}/>
