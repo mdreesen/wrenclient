@@ -1,6 +1,6 @@
 import React from 'react';
 import Auth from '../../utils/auth';
-import NavbarUser from '../../components/NavbarUser';
+import NavbarWorker from '../../components/NavbarWorker';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_USERTWO } from '../../utils/queries';
@@ -39,7 +39,7 @@ function UserProfile(props) {
 
     return (
         <div>
-            <NavbarUser />
+            <NavbarWorker />
             {Auth.loggedIn() ? (
                 <div>
                     <h3>Viewing {`${user.firstname} ${user.lastname}`}'s Profile</h3>

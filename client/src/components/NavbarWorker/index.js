@@ -18,7 +18,7 @@ function Navbar() {
         <div className="collapse navbar-collapse navbar-css" id="navbarNav">
         {Auth.loggedIn() ? (
             <ul className="navbar-nav">
-                    <Link to="/worker-home" className="nav-link">
+                    <Link to="/admin-home" className="nav-link">
                         Home
                     </Link>  
                 <li className="nav-item">
@@ -26,7 +26,7 @@ function Navbar() {
                         Users
                     </Link>                
                 </li>
-                    <Link to="/worker/settings" className="nav-link">
+                    <Link to="/admin-settings" className="nav-link">
                         Settings
                     </Link>
                 <li className="nav-item">
