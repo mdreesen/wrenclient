@@ -42,9 +42,9 @@ export const QUERY_FEELINGS = gql `
   query feelings($email: String) {
     feelings(email: $email) {
       _id
-      feelingText
+      email
       createdAt
-      username
+      feelingText
     }
   }
 `;
@@ -87,8 +87,9 @@ export const QUERY_ME = gql `
       email
       feelings {
         _id
-        feelingText
+        email
         createdAt
+        feelingText
       }
     }
   }
@@ -105,8 +106,9 @@ export const QUERY_ME_BASIC = gql `
       email
       feelings {
         _id
-        feelingText
+        email
         createdAt
+        feelingText
       }
     }
   }
