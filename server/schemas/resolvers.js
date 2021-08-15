@@ -31,12 +31,21 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select('-__v -password')
+        .populate('feelings')
     },
 
     // Getting user by email
     user: async (parent, { email }) => {
       return User.findOne({ email })
         .select('-__v -password')
+        .populate('feelings')
+    },
+
+    // Getting user be username
+    userTwo: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+        .populate('feelings')
     },
 
     // getting all feelings

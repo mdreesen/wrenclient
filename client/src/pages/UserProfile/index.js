@@ -2,55 +2,66 @@ import React from 'react';
 import Auth from '../../utils/auth';
 import NavbarUser from '../../components/NavbarUser';
 import { useParams } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/react-hooks';
-import { QUERY_USER } from '../../utils/queries';
-import { ASSOCIATE_WITH_WORKER } from '../../utils/mutations';
+import { useQuery } from '@apollo/react-hooks';
+import { QUERY_USERTWO } from '../../utils/queries';
 
 function UserProfile(props) {
-    const [associateWithWorker] = useMutation(ASSOCIATE_WITH_WORKER)
     const { username: userParam } = useParams();
 
-    const { loading, data } = useQuery(QUERY_USER, {
+    const { loading, data } = useQuery(QUERY_USERTWO, {
         variables: { username: userParam }
     })
 
-    // aww = "associateWithWorker"
-    // const aww = async () => {
-    //     try {
-    //         await associateWithWorker({
-    //             variables: {id: birthworker._id}
-    //         })
-    //     } catch (e) {
-    //         console.error(e)
-    //     }
-    // }
 
     // console.log(data)
 
-    const user = data?.user || {};
+    const user = data?.userTwo || {};
 
+    console.log(user)
+    console.log(user.feelings)
+    // console.log(user.feelings.feelingText)
 
-    if(loading) {
+    if (loading) {
         return <div>Loading BirthWorker's Profile</div>
     }
 
-    return(
-        <div>
-        <NavbarUser />
-        {Auth.loggedIn() ? (
-            <div>
-            <h3>Viewing {user.username}'s Profile</h3>
-            <div>
-                <p>{user.firstname}</p>
-                <p>{user.lastname}</p>
-                <p>{user.email}</p>
+    const noFeelingText = user?.feelings.map((feeling, index) => {
+        return (
+            <div key={`each-card-${feeling?._id}`} className="card box-shadow-back" style={{width: '18rem'}}>
+            <div className="card-body">
+                <p className="card-text">{feeling?.feelingText}</p>
+            </div>
+        </div>
+        )
+    })
 
-                {/* <button onClick={aww}>Add Worker</button> */}
-            </div>
-            </div>
-        ) : (
-            <h5>Please log in to to be a part of our community!</h5>
-        )}
+    console.log(noFeelingText)
+
+    return (
+        <div>
+            <NavbarUser />
+            {Auth.loggedIn() ? (
+                <div>
+                    <h3>Viewing {`${user.firstname} ${user.lastname}`}'s Profile</h3>
+                    <div>
+                        <p>{`Name: ${user.firstname} ${user.lastname}`}</p>
+                        <p>{`Email: ${user.email}`}</p>
+                        <p>{`Username: ${user.username}`}</p>
+                    </div>
+                    <div>
+                        <h4>Feeling Comments</h4>
+                        <div>
+                            {noFeelingText ? (
+                                <p>{user.feelings.feelingText}</p>
+                            ) : (
+                                <p>User has not shared how they feel yet</p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ) : (
+                    <h5>Please log in to to be a part of our community!</h5>
+                )}
 
         </div>
     );

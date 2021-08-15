@@ -3,12 +3,31 @@ import gql from 'graphql-tag';
 
 // querying single user
 export const QUERY_USER = gql`
-    query user($username: String!) {
-        user(username: $username) {
+    query user($email: String!) {
+        user(email: $email) {
         _id
         username
+        email
     }
 }
+`;
+
+// Getting user by username
+export const QUERY_USERTWO = gql `
+  query userTwo($username: String!) {
+    userTwo(username: $username) {
+      _id
+      username
+      firstname
+      lastname
+      email
+      feelings {
+        _id
+        feelingText
+        email
+      }
+    }
+  }
 `;
 
 export const QUERY_USERS = gql `
@@ -23,6 +42,7 @@ export const QUERY_USERS = gql `
         _id
         feelingText
         createdAt
+        email
       }
     }
   }

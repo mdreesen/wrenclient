@@ -10,9 +10,8 @@ const SearchUserCard = (props) => {
                     <div className="card-body">
                         <h5 className="card-title">{user.firstname}</h5>
                         <h5 className="card-title">{user.lastname}</h5>
-                        <p className="card-text">Description maybe?</p>
+                        <p className="card-text">{user.username}</p>
                         <Link to={`/profile/user/${user.username}`} className="btn btn-primary">View Profile</Link>
-                        {/* <a href="#" className="btn btn-primary">Affiliate</a> */}
                     </div>
                 </div>
             ))}
