@@ -9,7 +9,7 @@ import ApolloClient from 'apollo-boost';
 import Landing from './pages/Landing';
 import UserSettings from './pages/UserSettings';
 import Home from './pages/Home';
-import Communication from './pages/Communication';
+import Message from './pages/Message';
 
 import NotAPage from './pages/NotAPage';
 
@@ -51,7 +51,6 @@ function App() {
             <Route exact path="/" component={Landing}/>
             <Route exact path="/settings" component={UserSettings} />
             <Route exact path="/home" component={Home}/>
-            <Route exact path='/messages' component={Communication} />
 
             <Route exact path="/admin-login" component={AdminLogin}/>
             <Route exact path="/admin/265317993996/signup" component={BirthworkerSignup}/>
@@ -60,9 +59,12 @@ function App() {
             <Route exact path="/admin-users" component={AdminUsers} />
             <Route exact path="/admin-settings" component={AdminSettings}/>
             <Route exact path="/profile/user/:username" component={UserProfile}/>
-
             <Route exact path='/admin/settings' component={WorkerSettings} />
+
+            <Route exact path='/messages' component={Message} />
+
             <Route component={NotAPage}/>
+
           </Switch>
         </div>
       </Router>

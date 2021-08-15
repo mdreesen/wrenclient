@@ -8,9 +8,6 @@ function Mood() {
   const [feelingText, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
 
-  console.log('Feeling text', feelingText)
-  console.log('set Feeling text', setText)
-
 
   const [addFeeling, { error }] = useMutation(ADD_FEELING, {
     update(cache, { data: { addFeeling } }) {
@@ -25,8 +22,6 @@ function Mood() {
       } catch (e) {
         console.error(e);
       }
-
-      debugger
 
       // update me object's cache
       const { me } = cache.readQuery({ query: QUERY_ME });

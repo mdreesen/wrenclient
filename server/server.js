@@ -4,16 +4,19 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const socketio = require('socket.io');
-const http = require('http');
-
 
 // typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
-
 const db = require('./config/connection');
 
+// App connection -> PORT, app, server
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+// middleware for socketio server
+const http = require('http');
+const messageServer = http.createServer(app)
+const io = socketio(messageServer);
 
 // setting up Auth middleware
 const { authMiddleware } = require('./utils/auth');
@@ -27,9 +30,16 @@ const server = new ApolloServer({
     context: authMiddleware
 })
 
+io.on('connection', (socket) => {
+  console.log('SOCKETIO CONNECTION HAS ESTABLISHED');
+
+  socket.on('disconnect', () => {
+    console.log('USER HAS LEFT')
+  })
+})
+
 // integrate Apollo Server with express app as middleware
 server.applyMiddleware({ app });
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

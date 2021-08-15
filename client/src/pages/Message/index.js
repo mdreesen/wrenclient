@@ -3,7 +3,7 @@ import React from 'react';
 // Import Navbar
 import NavbarUser from '../../components/NavbarUser';
 
-const Communication = () => {
+const Message = () => {
     return (
         <div>
             <NavbarUser/>
@@ -12,4 +12,4 @@ const Communication = () => {
     );
 }
 
-export default Communication;
+export default Message;
