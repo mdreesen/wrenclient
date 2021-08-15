@@ -9,7 +9,9 @@ import ApolloClient from 'apollo-boost';
 import Landing from './pages/Landing';
 import UserSettings from './pages/UserSettings';
 import Home from './pages/Home';
+
 import Message from './pages/Message';
+import MessageJoined from './pages/MessageJoined';
 
 import NotAPage from './pages/NotAPage';
 
@@ -62,6 +64,7 @@ function App() {
             <Route exact path='/admin/settings' component={WorkerSettings} />
 
             <Route exact path='/messages' component={Message} />
+            <Route exact path='/chat' component={MessageJoined} />
 
             <Route component={NotAPage}/>
 
