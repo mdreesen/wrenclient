@@ -2,7 +2,7 @@ import React from 'react';
 
 // Import Navbar
 import NavbarUser from '../../components/NavbarUser';
-import Chat from '../../components/MessageChat';
+// import Chat from '../../components/MessageChat';
 
 const MessageJoined = () => {
     return (

@@ -19,23 +19,18 @@ function UserProfile(props) {
 
     console.log(user)
     console.log(user.feelings)
-    // console.log(user.feelings.feelingText)
+    console.log(user)
+
+    const allFeelings = user?.feelings?.findIndex(function(feeling, index) {
+        console.log(feeling?.feelingText)
+        // console.log(index)
+    })
+
+    console.log(allFeelings)
 
     if (loading) {
         return <div>Loading BirthWorker's Profile</div>
     }
-
-    const noFeelingText = user?.feelings.map((feeling, index) => {
-        return (
-            <div key={`each-card-${feeling?._id}`} className="card box-shadow-back" style={{width: '18rem'}}>
-            <div className="card-body">
-                <p className="card-text">{feeling?.feelingText}</p>
-            </div>
-        </div>
-        )
-    })
-
-    console.log(noFeelingText)
 
     return (
         <div>
@@ -51,11 +46,10 @@ function UserProfile(props) {
                     <div>
                         <h4>Feeling Comments</h4>
                         <div>
-                            {noFeelingText ? (
-                                <p>{user.feelings.feelingText}</p>
-                            ) : (
-                                <p>User has not shared how they feel yet</p>
-                            )}
+
+                                <p>{allFeelings}</p>
+
+
                         </div>
                     </div>
                 </div>
