@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ApolloProvider, operationName } from '@apollo/react-hooks';
+import { ChatEngine } from 'react-chat-engine';
 import ApolloClient from 'apollo-boost';
 
 // Import pages
@@ -63,7 +64,14 @@ function App() {
             <Route exact path="/profile/user/:username" component={UserProfile}/>
             <Route exact path='/admin/settings' component={WorkerSettings} />
 
-            <Route exact path='/messages' component={Message} />
+            <Route exact path='/messages' component={
+            <ChatEngine 
+              height='100vh'
+              projectID=""
+              userName=""
+              userSecret=""
+            />
+            } />
             <Route exact path='/chat' component={MessageJoined} />
 
             <Route component={NotAPage}/>
